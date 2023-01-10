@@ -5,12 +5,12 @@ from flask import Flask
 app = Flask(__name__)
 
 
-@app.route('/data', methods=["GET"])
-def read_data():
+@app.route('/<company_id>', methods=["GET"])
+def read_data(company_id):
     db = sqlite3.connect("data.db")
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM companies")
-    data = cursor.fetchall()
+    cursor.execute(f"SELECT * FROM companies WHERE id={company_id}")
+    data = list(cursor.fetchone())
     return data
 
 
