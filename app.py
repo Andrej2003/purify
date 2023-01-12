@@ -10,7 +10,7 @@ def read_data():
     db = sqlite3.connect("data.db")
     cursor = db.cursor()
     cursor.execute(f"SELECT * FROM companies")
-    data = list(cursor.fetchone())
+    data = cursor.fetchall()
     return data
 
 
@@ -34,7 +34,8 @@ def write_data():
     client = pymongo.MongoClient("mongodb://localhost:27017")
     db = client['purified_data']
     companies = db["companies"]
-    companies.insert_one(clean_data)
+    # companies.insert_one(clean_data)
+
     return "Data is cleaned and put in the database"
 
 
