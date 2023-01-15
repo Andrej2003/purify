@@ -8,20 +8,32 @@ companies_data = requests.get("http://localhost:5000/companies-data").json()
 
 
 def clean_names():
+    u = re.compile("company", flags=re.IGNORECASE)
+    v = re.compile("llp", flags=re.IGNORECASE)
+    w = re.compile("uk", flags=re.IGNORECASE)
     x = re.compile("limited", flags=re.IGNORECASE)
     y = re.compile("ltd", flags=re.IGNORECASE)
     z = re.compile("ltd.", flags=re.IGNORECASE)
     names = [i[1].lower() for i in companies_data]
 
     for i, j in enumerate(names):
+        if bool(u.search(j)):
+            names[i] = j.replace(u.search(j).group(), "").strip().strip("()").title()
+
+        if bool(v.search(j)):
+            names[i] = j.replace(v.search(j).group(), "").strip().strip("()").title()
+
+        if bool(w.search(j)):
+            names[i] = j.replace(w.search(j).group(), "").strip().strip("()").title()
+
         if bool(x.search(j)):
-            names[i] = j.replace(x.pattern, "").title().strip().strip("()")
+            names[i] = j.replace(x.search(j).group(), "").strip().strip("()").title()
 
         if bool(y.search(j)):
-            names[i] = j.replace(y.pattern, "").title().strip().strip("()")
+            names[i] = j.replace(y.search(j).group(), "").strip().strip("()").title()
 
         if bool(z.search(j)):
-            names[i] = j.replace(z.pattern, "").title().strip().strip("()")
+            names[i] = j.replace(z.search(j).group(), "").strip().strip("()").title()
 
     return names
 
@@ -51,24 +63,23 @@ t2 = time.process_time()
 print(f"function {clean_names.__name__} took {t2 - t1}")
 
 
-
 # cleaning the data using cleanco
 t3 = time.process_time()
 names2 = clean_names2()
 t4 = time.process_time()
 print(f"function {clean_names2.__name__} took {t4 - t3}")  # slower than function custom function clean_names
 
-# counted = 0
-# miss = []
-# for i in range(len(names1)):
-#     if names1[i].lower() == names2[i].lower():
-#         counted += 1
-#     else:
-#         miss += [(names1[i], names2[i])]
-# else:
-#     print(counted)
-#     print(len(miss))
-#     print(miss)
+counted = 0
+miss = []
+for i in range(len(names1)):
+    if names1[i].title() == names2[i].title():
+        counted += 1
+    else:
+        miss += [(names1[i], names2[i])]
+else:
+    print(counted)
+    print(len(miss))
+    print(miss)
 
 
 # test_company_id = requests.post("http://localhost:5000/companies-data/purify", data={"id": 1234})
