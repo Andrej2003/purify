@@ -1,6 +1,7 @@
 import time
 import requests
 import re
+from pprint import pprint
 
 from cleanco import cleanco
 
@@ -8,6 +9,8 @@ companies_data = requests.get("http://localhost:5000/companies-data").json()
 
 
 def clean_names():
+    s = re.compile("[.]$")
+    t = re.compile("plc", flags=re.IGNORECASE)
     u = re.compile("company", flags=re.IGNORECASE)
     v = re.compile("llp", flags=re.IGNORECASE)
     w = re.compile("uk", flags=re.IGNORECASE)
@@ -17,25 +20,72 @@ def clean_names():
     names = [i[1].lower() for i in companies_data]
 
     for i, j in enumerate(names):
-        if bool(u.search(j)):
-            names[i] = j.replace(u.search(j).group(), "").strip().strip("()").title()
+        if bool(s.search(j)):
+            j = s.sub("", j)
+
+        if bool(t.search(j)):
+            j = j.replace(t.search(j).group(), "").strip("()").title().strip()
+
+        # if bool(u.search(j)):
+        #     j = j.replace(u.search(j).group(), "").strip("()").title().strip()
 
         if bool(v.search(j)):
-            names[i] = j.replace(v.search(j).group(), "").strip().strip("()").title()
+            j = j.replace(v.search(j).group(), "").strip().strip("()").title().strip()
 
         if bool(w.search(j)):
-            names[i] = j.replace(w.search(j).group(), "").strip().strip("()").title()
+            j = j.replace(w.search(j).group(), "").strip().strip("()").title().strip()
 
         if bool(x.search(j)):
-            names[i] = j.replace(x.search(j).group(), "").strip().strip("()").title()
+            j = j.replace(x.search(j).group(), "").strip().strip("()").title().strip()
 
         if bool(y.search(j)):
-            names[i] = j.replace(y.search(j).group(), "").strip().strip("()").title()
+            j = j.replace(y.search(j).group(), "").strip().strip("()").title().strip()
 
         if bool(z.search(j)):
-            names[i] = j.replace(z.search(j).group(), "").strip().strip("()").title()
+            j = j.replace(z.search(j).group(), "").strip().strip("()").title().strip()
+
+        names[i] = j
 
     return names
+
+# def clean_names():
+#     u = re.compile("company", flags=re.IGNORECASE)
+#     v = re.compile("llp", flags=re.IGNORECASE)
+#     w = re.compile("uk", flags=re.IGNORECASE)
+#     x = re.compile("limited", flags=re.IGNORECASE)
+#     y = re.compile("ltd", flags=re.IGNORECASE)
+#     z = re.compile("ltd.", flags=re.IGNORECASE)
+#     names = [i[1].lower() for i in companies_data]
+#     name = names[0]
+#
+#     for i, j in enumerate(names[0:1]):
+#         if bool(u.search(j)):
+#             names[i] = j.replace(u.search(j).group(), "").strip().strip("()").title()
+#             print("inside u", names[0])
+#
+#         if bool(v.search(j)):
+#             names[i] = j.replace(v.search(j).group(), "").strip().strip("()").title()
+#             print("inside v", names[0])
+#
+#         if bool(w.search(j)):
+#             names[i] = j.replace(w.search(j).group(), "").strip().strip("()").title()
+#             print("inside w", names[0])
+#         print("after w", names[0])
+#         if bool(x.search(j)):
+#             names[i] = j.replace(x.search(j).group(), "").strip().strip("()").title()
+#             print("inside x", names[0])
+#         print("before y", names[0])
+#         if bool(y.search(j)):
+#             print("index", names[i])
+#             names[i] = j.replace(y.search(j).group(), "").strip().strip("()").title()
+#             print("inside y", names[0])
+#         print('after y', names[0])
+#
+#         if bool(z.search(j)):
+#             names[i] = j.replace(z.search(j).group(), "").strip().strip("()").title()
+#             print("inside z", names[0])
+#
+#     return names
 
 
 def clean_names2():
@@ -45,14 +95,6 @@ def clean_names2():
         names[i] = x.clean_name()
 
     return names
-
-    # data = {"id": i[0],
-    #         "name": i[1],
-    #         "country_iso": i[2],
-    #         "city": i[3],
-    #         "nace": i[4],
-    #         "website": i[5], }
-    # print(data)
 
 
 # cleaning the data without cleanco
@@ -79,7 +121,7 @@ for i in range(len(names1)):
 else:
     print(counted)
     print(len(miss))
-    print(miss)
+    pprint(miss)
 
 
 # test_company_id = requests.post("http://localhost:5000/companies-data/purify", data={"id": 1234})
