@@ -14,7 +14,7 @@ def clean_names():
     t = re.compile("plc", flags=re.IGNORECASE)
     u = re.compile("company", flags=re.IGNORECASE)
     v = re.compile("llp", flags=re.IGNORECASE)
-    w = re.compile("uk", flags=re.IGNORECASE)
+    w = re.compile("uk|u[.]k[.]", flags=re.IGNORECASE)
     x = re.compile("limited", flags=re.IGNORECASE)
     y = re.compile("ltd", flags=re.IGNORECASE)
     z = re.compile("ltd.", flags=re.IGNORECASE)
