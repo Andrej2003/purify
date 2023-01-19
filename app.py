@@ -11,7 +11,8 @@ def read_data():
     cursor = db.cursor()
     cursor.execute(f"SELECT * FROM companies")
     data = cursor.fetchall()
-    return data
+    column_names = [name[0] for name in cursor.description]
+    return [data, column_names]
 
 
 @app.route('/companies-data/purify', methods=["POST"])
