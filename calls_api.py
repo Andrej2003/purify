@@ -1,7 +1,6 @@
 import time
 import requests
 import re
-# from pprint import pprint
 from cleanco import cleanco
 data = requests.get("http://localhost:5000/companies-data").json()
 companies = data[0]
@@ -74,8 +73,7 @@ def write_data(cleaned_data):
         new_data[columns[3]] = j[3]
         new_data[columns[4]] = j[4]
         new_data[columns[5]] = j[5]
-        print(new_data)
-        return new_data
+        requests.post("http://localhost:5000/companies-data/purify", json=new_data)
 
 
 # cleaning the data without cleanco
@@ -90,23 +88,7 @@ write_data(names1)
 t4 = time.process_time()
 print(f"function {write_data.__name__} took {t4 - t3}")
 
-# # cleaning the data using cleanco
-# t3 = time.process_time()
-# names2 = clean_names2()
-# t4 = time.process_time()
-# print(f"function {clean_names2.__name__} took {t4 - t3}")  # slower than function custom function clean_names
-#
-# counted = 0
-# miss = []
-# for i in range(len(names1)):
-#     if names1[i].title() == names2[i].title():
-#         counted += 1
-#     else:
-#         miss += [(names1[i], names2[i])]
-# else:
-#     print(counted)
-#     print(len(miss))
-#     pprint(miss)
 
 
-# test_company_id = requests.post("http://localhost:5000/companies-data/purify", data={"id": 1234})
+
+test_company_id = requests.post("http://localhost:5000/companies-data/purify", data={"id": 1234})
