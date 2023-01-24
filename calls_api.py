@@ -1,6 +1,7 @@
 import time
 import requests
 import re
+import json
 from cleanco import cleanco
 data = requests.get("http://localhost:5000/companies-data").json()
 companies = data[0]
@@ -65,6 +66,7 @@ def clean_names2():
 
 def write_data(cleaned_data):
     new_data = {}
+    all_data = []
     for i, j in enumerate(companies):
         j[1] = cleaned_data[i]
         new_data[columns[0]] = j[0]
@@ -73,7 +75,11 @@ def write_data(cleaned_data):
         new_data[columns[3]] = j[3]
         new_data[columns[4]] = j[4]
         new_data[columns[5]] = j[5]
-        requests.post("http://localhost:5000/companies-data/purify", json=new_data)
+        all_data += [new_data]
+        new_data = {}
+    else:
+        req = requests.post("http://localhost:5000/companies-data/purify", json=json.dumps(all_data))
+        return req
 
 
 # cleaning the data without cleanco
@@ -87,8 +93,3 @@ t3 = time.process_time()
 write_data(names1)
 t4 = time.process_time()
 print(f"function {write_data.__name__} took {t4 - t3}")
-
-
-
-
-test_company_id = requests.post("http://localhost:5000/companies-data/purify", data={"id": 1234})
