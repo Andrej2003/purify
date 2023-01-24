@@ -65,18 +65,18 @@ def clean_names2():
 
 
 def write_data(cleaned_data):
-    new_data = {}
     all_data = []
     for i, j in enumerate(companies):
         j[1] = cleaned_data[i]
-        new_data[columns[0]] = j[0]
-        new_data[columns[1]] = j[1]
-        new_data[columns[2]] = j[2]
-        new_data[columns[3]] = j[3]
-        new_data[columns[4]] = j[4]
-        new_data[columns[5]] = j[5]
+        new_data = {
+            columns[0]: j[0],
+            columns[1]: j[1],
+            columns[2]: j[2],
+            columns[3]: j[3],
+            columns[4]: j[4],
+            columns[5]: j[5], }
+
         all_data += [new_data]
-        new_data = {}
     else:
         req = requests.post("http://localhost:5000/companies-data/purify", json=json.dumps(all_data))
         return req
