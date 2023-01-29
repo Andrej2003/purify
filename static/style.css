@@ -1,0 +1,21 @@
+body {
+    background-color: #9999ff;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 120px;
+}
+
+.title p {
+    padding: 30px;
+    width: 30%;
+    text-align: center;
+    font-size: 45px;
+    border-radius: 10px;
+    background: #F9E9F7;
+}
+
+
