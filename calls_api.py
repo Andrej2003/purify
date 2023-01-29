@@ -2,7 +2,8 @@ import time
 import requests
 import re
 import json
-from cleanco import cleanco
+
+
 data = requests.get("http://localhost:5000/companies-data").json()
 companies = data[0]
 columns = data[1]
@@ -51,15 +52,6 @@ def clean_names():
         j = " ".join(j.split()).title()
 
         names[i] = j
-
-    return names
-
-
-def clean_names2():
-    names = [i[1] for i in companies]
-    for i, j in enumerate(names):
-        x = cleanco(j)
-        names[i] = x.clean_name()
 
     return names
 
