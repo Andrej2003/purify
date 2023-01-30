@@ -24,7 +24,7 @@ def read_data_template():
     cursor.execute(f"SELECT * FROM companies")
     data = cursor.fetchall()
     column_names = [name[0] for name in cursor.description]
-    return render_template("index.html", data=[data, column_names])
+    return render_template("index.html", data=data, columns=column_names)
 
 
 @app.route('/companies-data/purify', methods=["POST"])
