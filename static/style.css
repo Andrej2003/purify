@@ -18,4 +18,13 @@ body {
     background: #F9E9F7;
 }
 
+.table {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 9px;
+    background: white;
+    text-align: center;
+    width: 97%;
+}
 
+.table tr:hover { background: grey; }
