@@ -15,7 +15,7 @@ Overview
 
 Technologies
 ------------
-**Python 3.10**
+**Python 3.10 (recommended)**
 
 The project is created with:
 
@@ -30,3 +30,6 @@ Setup
 
 Key Features
 ------------
+* removes legal entity suffix
+* removes parentheses and text in them
+* capitalizes the company/business name
