@@ -6,6 +6,7 @@ from flask import Flask, request, render_template
 app = Flask(__name__, static_url_path="/static")
 
 
+@app.route('/')
 @app.route('/companies-data', methods=["GET"])
 def read_data():
     db = sqlite3.connect("data.db")
