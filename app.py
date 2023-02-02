@@ -8,17 +8,6 @@ app = Flask(__name__, static_url_path="/static")
 
 @app.route('/')
 @app.route('/companies-data', methods=["GET"])
-def read_data():
-    db = sqlite3.connect("data.db")
-    cursor = db.cursor()
-    cursor.execute(f"SELECT * FROM companies")
-    data = cursor.fetchall()
-    column_names = [name[0] for name in cursor.description]
-    return [data, column_names]
-
-
-@app.route('/')
-@app.route('/companies-data', methods=["GET"])
 def read_data_template():
     db = sqlite3.connect("data.db")
     cursor = db.cursor()
@@ -26,6 +15,17 @@ def read_data_template():
     data = cursor.fetchall()
     column_names = [name[0] for name in cursor.description]
     return render_template("index.html", data=data, columns=column_names)
+
+
+@app.route('/')
+@app.route('/companies-data', methods=["GET"])
+def read_data():
+    db = sqlite3.connect("data.db")
+    cursor = db.cursor()
+    cursor.execute(f"SELECT * FROM companies")
+    data = cursor.fetchall()
+    column_names = [name[0] for name in cursor.description]
+    return [data, column_names]
 
 
 @app.route('/companies-data/purify', methods=["POST"])
