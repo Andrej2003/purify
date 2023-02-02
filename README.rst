@@ -1,6 +1,8 @@
 ======
 Purify
 ======
+.. image:: https://img.shields.io/badge/python-3.10-blue
+   :alt: Recommended Python version
 Big Data Purification (Company Names) with Flask Application
 
 Table of Contents
