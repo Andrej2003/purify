@@ -27,6 +27,11 @@ The project is created with:
 
 Setup
 -----
+To set up the app run the following command:
+
+.. code-block::
+
+    pip install -r requirements.txt
 
 Key Features
 ------------
