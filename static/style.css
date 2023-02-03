@@ -6,7 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 120px;
+    margin: 120px 0px 90px 0px;
 }
 
 .title p {
@@ -18,23 +18,40 @@ body {
     background: #F9E9F7;
 }
 
-#companies-table {
-    width: 97%;
+#companies-table_wrapper {
+    width: 87%;
     margin-left: auto;
     margin-right: auto;
+}
+
+#companies-table {
     border-radius: 9px;
     background: white;
     text-align: center;
+    overflow: hidden;
  }
 
-#companies-table_length select { background: white; }
+#companies-table_length,
+#companies-table_filter,
+#companies-table_info,
+#companies-table_paginate {
+    font-weight: bold;
+}
 
-#companies-table_filter input { background: white; }
+#companies-table_length select { background: white; margin: 0px 0px 13px 0px; }
 
-#companies-table_info { background: white; }
+#companies-table_filter input { background: white; 0px 0px 13px 0px; }
 
-#companies-table_paginate { color: white; border-radius: 9px; }
+#companies-table_info { margin: 12px 0px 0px 0px; }
 
-.table tr:hover { background: grey; border-radius: 9px; }
+#companies-table_paginate { color: white; border-radius: 9px; margin: 12px 0px 0px 0px; }
 
-button { margin: 0px 0px 20px 0px; }
+#companies-table_paginate a:hover {
+    background: lightgrey;
+    color: black !important;
+}
+
+
+.table tr:hover { background: #ebebeb; }
+
+button { margin: 40px 0px 20px 0px; }
