@@ -18,13 +18,34 @@ body {
     background: #F9E9F7;
 }
 
+#companies-table {
+    width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 9px;
+    background: white;
+    text-align: center;
+ }
+
+#companies-table_length select { background: white; }
+
+#companies-table_filter input { background: white; }
+
+#companies-table_info { background: white; }
+
+#companies-table_paginate { color: white; border-radius: 9px; }
+
+/*
 .table {
     margin-left: auto;
     margin-right: auto;
     border-radius: 9px;
     background: white;
     text-align: center;
-    width: 97%;
-}
+} */
 
-.table tr:hover { background: grey; }
+.table tr:hover { background: grey; border-radius: 9px; }
+
+
+
+button { margin: 0px 0px 20px 0px; }
