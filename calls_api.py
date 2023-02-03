@@ -4,7 +4,7 @@ import re
 import json
 
 
-data = requests.get("http://localhost:5000/companies-data").json()
+data = requests.get("http://localhost:5000/api/companies-data").json()
 companies = data[0]
 columns = data[1]
 
