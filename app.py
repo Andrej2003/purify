@@ -17,8 +17,8 @@ def read_data_template():
     return render_template("index.html", data=data, columns=column_names)
 
 
-@app.route('/')
-@app.route('/companies-data', methods=["GET"])
+@app.route('/api')
+@app.route('/api/companies-data', methods=["GET"])
 def read_data():
     db = sqlite3.connect("data.db")
     cursor = db.cursor()
