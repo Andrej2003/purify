@@ -14,6 +14,10 @@ Table of Contents
 
 Overview
 --------
+The Flask application connects to a database in the relative
+directory using sqlite3 and reads all the data then returns
+a list of it and its' column names on the ``/api`` or
+``/api/companies-data`` endpoint.
 
 Technologies
 ------------
