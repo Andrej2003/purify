@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+{% block table %}
+<thead>
+    <tr>
+        <th>{{ columns[0] }}</th>
+        <th>{{ columns[1] }}</th>
+        <th>{{ columns[2] }}</th>
+        <th>{{ columns[3] }}</th>
+        <th>{{ columns[4] }}</th>
+        <th>{{ columns[5] }}</th>
+    </tr>
+</thead>
+<tbody>
+    {% for doc in data %}
+        {% for key, value in doc.items() %}
+    <tr>
+        <td>{{ key }}</td>
+        <td>{{ value[columns[1]] }}</td>
+        <td>{{ value[columns[2]] }}</td>
+        <td>{{ value[columns[3]] }}</td>
+        <td>{{ value[columns[4]] }}</td>
+        <td>{{ value[columns[5]] }}</td>
+    </tr>
+        {% endfor %}
+    {% endfor %}
+</tbody>
+{% endblock %}
