@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% block head %}
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -16,12 +17,15 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="/static/style.css">
+    {% endblock %}
 </head>
 <body>
+    {% block body %}
     <div class="title">
         <p>Purify</p>
     </div>
     <table class="table" id="companies-table">
+        {% block table %}
         <thead>
             <tr>
                 <th>{{ columns[0] }}</th>
@@ -44,11 +48,13 @@
             </tr>
             {% endfor %}
         </tbody>
+        {% endblock %}
     </table>
     <div class="text-center">
             <button type="button" class="btn btn-light btn-lg">Read Data</button>
             <button type="button" class="btn btn-dark btn-lg">Write Data</button>
             <button type="button" class="btn btn-light btn-lg">Clean Data</button>
     </div>
+    {% endblock %}
 </body>
 </html>
