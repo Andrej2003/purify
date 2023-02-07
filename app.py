@@ -28,7 +28,16 @@ def read_data():
     return [data, column_names]
 
 
-@app.route('/companies-data/purify', methods=["POST"])
+@app.route('/companies-data/purify', methods=["GET"])
+def write_data_view():
+    client = pymongo.MongoClient("mongodb://localhost:27017")
+    db = client['purified_data']['companies']
+    data = [x for x in db.find({}, {"_id": 0})]
+    columns = ["name", "id", "country_iso", "city", "nace", "website"]
+    return render_template("purified.html", data=data, columns=columns)
+
+
+@app.route('/api/companies-data/purify', methods=["POST"])
 def write_data():
     clean_data = json.loads(request.json)
 
