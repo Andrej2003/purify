@@ -40,18 +40,36 @@ body {
 
 #companies-table_length select { background: white; margin: 0px 0px 13px 0px; }
 
-#companies-table_filter input { background: white; 0px 0px 13px 0px; }
+#companies-table_filter input { background: white; }
 
-#companies-table_info { margin: 12px 0px 0px 0px; }
+#companies-table_info { margin: 13px 0px 0px 0px; }
 
-#companies-table_paginate { color: white; border-radius: 9px; margin: 12px 0px 0px 0px; }
-
-#companies-table_paginate a:hover {
-    background: lightgrey;
-    color: black !important;
+#companies-table_paginate {
+    color: white;
+    border-radius: 9px;
+    border: none;
+    margin: 13px 0px 0px 0px;
+    overflow: hidden;
+    padding: 0;
 }
 
+#companies-table_paginate a:hover {
+    background: #001B6C;
+    /* color: black !important; */
+}
+
+#companies-table_previous.paginate_button.disabled:hover,
+#companies-table_next.paginate_button.disabled:hover {
+    background: transparent;
+    color: #666 !important;
+}
+
+#companies-table_paginate span a.paginate_button.current {
+    background: #001B6C;
+    border: none;
+    /* color: black !important; */
+}
 
 .table tr:hover { background: #ebebeb; }
 
-button { margin: 40px 0px 20px 0px; }
+.button { margin: 40px 0px 20px 0px; }
