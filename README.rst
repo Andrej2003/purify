@@ -15,12 +15,12 @@ Table of Contents
 Overview
 --------
 The Flask application connects to a database in the relative
-directory using sqlite3 and reads all the data then returns
+directory using sqlite3. It reads all the data then returns
 a list of it and its' column names on the ``/api`` or
 ``/api/companies-data`` endpoint. The application also has
 an ``/api/companies-data/purify`` endpoint which writes the
-new cleaned data in a mongodb database.
-There is also another script which makes request calls to the API.
+new cleaned data in a MongoDB database.
+There is also another script that makes request calls to the API.
 
 Technologies
 ------------
