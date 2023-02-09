@@ -3,6 +3,10 @@ Purify
 ======
 .. image:: https://img.shields.io/badge/python-3.10-blue
    :alt: Recommended Python version
+.. image:: https://img.shields.io/badge/flask-2.2.2-green
+   :alt: Flask version: 2.2.2
+.. image:: https://img.shields.io/badge/app-purify-brightgreen
+   :alt: App Purify
 Big Data Purification (Company Names) with Flask Application
 
 Table of Contents
@@ -15,12 +19,14 @@ Table of Contents
 Overview
 --------
 The Flask application connects to a database in the relative
-directory using sqlite3. It reads all the data then returns
-a list of it and its' column names on the ``/api`` or
-``/api/companies-data`` endpoint. The application also has
-an ``/api/companies-data/purify`` endpoint which writes the
-new cleaned data in a MongoDB database.
-There is also another script that makes request calls to the API.
+directory using sqlite3. It reads all the data then returns it
+and its' column names on the ``/api`` or ``/api/companies-data``
+endpoint. It also has an ``/api/companies-data/purify`` endpoint
+which writes the new cleaned data in a MongoDB database.
+The calls_api.py makes request calls to the API endpoints.
+
+
+
 
 Technologies
 ------------
@@ -28,10 +34,17 @@ Technologies
 
 The project is created with:
 
+Backend:
+
 * Flask version: 2.2.2
-* Jinja2 version: 3.1.2
 * requests version: 2.28.1
 * pymongo version: 4.3.3
+
+Frontend:
+
+* Jinja2 version: 3.1.2
+* Bootstrap version: 5.3.0
+* DataTables version: 1.13.1
 
 
 Setup
