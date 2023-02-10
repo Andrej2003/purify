@@ -9,7 +9,8 @@ app = Flask(__name__, static_url_path="/static")
 @app.route('/')
 @app.route('/companies-data', methods=["GET"])
 def read_data_template():
-    """ Renders a template (or view) for the companies-data endpoint.
+    """
+    Renders a template (or view) for the companies-data endpoint.
 
     :return: str
     """
