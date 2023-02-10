@@ -37,13 +37,13 @@ Technologies
 
 The project is created with:
 
-Backend:
+**Backend:**
 
 * Flask version: 2.2.2
 * requests version: 2.28.1
 * pymongo version: 4.3.3
 
-Frontend:
+**Frontend:**
 
 * Jinja2 version: 3.1.2
 * Bootstrap version: 5.3.0
@@ -58,8 +58,21 @@ To set up the app run the following command:
 
     pip install -r requirements.txt
 
+To run ``app.py`` run the command:
+
+.. code-block::
+
+    python3 app.py
+
+To run ``calls_api.py`` run the command:
+
+.. code-block::
+
+    python3 calls_api.py
+
+
 Key Features
 ------------
 * removes legal entity suffix
 * removes parentheses and text in them
-* capitalizes the company/business name
+* capitalizes the company name
