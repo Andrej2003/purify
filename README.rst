@@ -72,4 +72,3 @@ To set up and run the app use the following commands:
 .. code-block::
 
     python3 calls_api.py
-
