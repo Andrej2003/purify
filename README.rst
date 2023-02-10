@@ -28,8 +28,11 @@ endpoint. It also has an ``/api/companies-data/purify`` endpoint
 which writes the new cleaned data in a MongoDB database.
 The calls_api.py makes request calls to the API endpoints.
 
-
-
+Key Features
+------------
+* removes legal entity suffix
+* removes parentheses and text in them
+* capitalizes the company name
 
 Technologies
 ------------
@@ -52,27 +55,21 @@ The project is created with:
 
 Setup
 -----
-To set up the app run the following command:
+To set up and run the app use the following commands:
 
 .. code-block::
 
     pip install -r requirements.txt
 
-To run ``app.py`` run the command:
+* To run ``app.py`` use the command:
 
 .. code-block::
 
     python3 app.py
 
-To run ``calls_api.py`` run the command:
+* To run ``calls_api.py`` use the command:
 
 .. code-block::
 
     python3 calls_api.py
 
-
-Key Features
-------------
-* removes legal entity suffix
-* removes parentheses and text in them
-* capitalizes the company name
