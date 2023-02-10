@@ -30,9 +30,9 @@ The calls_api.py makes request calls to the API endpoints.
 
 Key Features
 ------------
-* removes legal entity suffix
-* removes parentheses and text in them
-* capitalizes the company name
+* Removes legal entity suffix
+* Deletes parentheses and text in them
+* Capitalizes the company name
 
 Technologies
 ------------
@@ -72,3 +72,6 @@ To set up and run the app use the following commands:
 .. code-block::
 
     python3 calls_api.py
+
+Before using the commands above install  `MongoDB
+<https://www.mongodb.com/try/download/community>`_
