@@ -21,12 +21,25 @@ Table of Contents
 
 Overview
 --------
-The Flask application connects to a database in the relative
-directory using sqlite3. It reads all the data then returns it
-and its' column names on the ``/api`` or ``/api/companies-data``
-endpoint. It also has an ``/api/companies-data/purify`` endpoint
-which writes the new cleaned data in a MongoDB database.
+The Flask application connects to a database in the relative directory using sqlite3. 
+It reads all the data then returns it and its' column names on the ``/api`` or ``/api/companies-data`` endpoint. 
+It also has an ``/api/companies-data/purify`` endpoint which writes the new cleaned data in a MongoDB database.
 The calls_api.py makes request calls to the API endpoints.
+
+In calls_api there are two functions:
+
+1. clean_names - takes a list of the company names then cleans them from legal entity suffixes (such as “limited”, “ltd”, “ltd.”, “c.i.c”, “llc”), then removes parentheses, text in them and capitalizes the name
+2. write_data - this function takes the clean data as an argument then makes a POST request to write the data in the database with the clean company name as the key and a dictionary of the company attributes (“id”, “country_iso”, “city”, “nace” and “website”) as the value
+
+The project has a front-end which is available at the following routes:
+
+* ``/``  
+* ``/companies-data``
+* ``/companies-data/purify``
+
+There are two buttons that show the original and purified data in a table which has searching, number of entries per page and pagination.
+
+
 
 Key Features
 ------------
