@@ -28,11 +28,11 @@ The calls_api.py makes request calls to the API endpoints.
 
 In calls_api there are two functions:
 
-1. clean_names - takes a list of the company names then cleans them from legal entity suffixes (such as “limited”,
-“ltd”, “ltd.”, “c.i.c”, “llc”), then removes parentheses, text in them and capitalizes the name.
+1. clean_names - takes a list of the company names then cleans them from legal entity suffixes (such as "limited",
+"ltd", "ltd.", "c.i.c", "llc"), then removes parentheses, text in them and capitalizes the name.
 2. write_data - this function takes the clean data as an argument then makes a POST request to write the data in the
-database with the clean company name as the key and a dictionary of the company attributes (“id”, “country_iso”, “city”,
-“nace” and “website”) as the value.
+database with the clean company name as the key and a dictionary of the company attributes ("id", "country_iso", "city",
+"nace" and "website") as the value.
 
 The project has a front-end which is available at the following routes:
 
